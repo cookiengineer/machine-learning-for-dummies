@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="./Brain.js"></script>
+</head>
+<body>
+
+<p>Please open up the Web Developer Console</p>
+
+<script>
+let brain = new Brain();
+let data  = { inputs: [1,0], outputs: [1] };
+
+brain.initialize(data.inputs, data.outputs);
+
+
+let outputs = brain.compute(data.inputs);
+
+console.log('computed:', outputs);
+console.log('expected:', data.outputs);
+</script>
+</body>
+</html>
+
