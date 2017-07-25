@@ -34,11 +34,37 @@ projects and to find mistakes my code :)
 
 # Chapter 2
 
-REFACTOR TBD. This chapter will guide the reader through
-the advantages of evolutionary / competitive concepts and
-evolutionary (unsupervised) learning in general and the
-idea of generational knowledge models.
+1. [Genetic Programming](./chapter-02/01-genetic-programming.md)
+2. [Neural Network Genome](./chapter-02/02-neural-network-genome.md)
 
+TBD:
+
+3. [Evolution](./chapter-02/03-evolution.md)
+4. [Flappy Plane (Homework)](./chapter-02/04-flappy-plane.md)
+
+# Chapter 3 (TBD)
+
+- Reinforcement Learning Basics
+- Backpropagation
+- ??? explain quirks of overfitting scenarios
+- ??? explain reward hacking
+- Pong Game (Homework)
+
+# Chapter 4 (TBD)
+
+- ANN Design Algorithms
+- NEAT
+- Species Management
+- Genome Pool and Breeding
+- NEAT Flappy Plane (Homework)
+
+# Chapter 5 (TBD)
+
+- HyperNEAT
+- ??? explain idea of replacing activation functions
+- Genome Representation / Substrates
+- ??? explain quirks of dna history analysis
+- HyperNEAT Pong Game (Homework)
 
 
 ## Medium Articles
