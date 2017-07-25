@@ -30,17 +30,18 @@ projects and to find mistakes my code :)
 2. [Neural Network Basics](./chapter-01/01-neural-network-basics.md)
 3. [Activation Function](./chapter-01/02-activation-function.md)
 4. [Feed-Forward Network](./chapter-01/03-feed-forward-network.md)
-5. [Example (Homework)](./chapter-01/04-example.md)
+5. [Brain (Homework)](./chapter-01/04-homework.md)
+
+This chapter also includes a [solution](./chapter-01/solution).
 
 # Chapter 2
 
 1. [Genetic Programming](./chapter-02/01-genetic-programming.md)
 2. [Neural Network Genome](./chapter-02/02-neural-network-genome.md)
-
-TBD:
-
 3. [Evolution](./chapter-02/03-evolution.md)
-4. [Flappy Plane (Homework)](./chapter-02/04-flappy-plane.md)
+4. [Flappy Plane (Homework)](./chapter-02/04-homework.md)
+
+This chapter also includes a [solution](./chapter-02/solution).
 
 # Chapter 3 (TBD)
 

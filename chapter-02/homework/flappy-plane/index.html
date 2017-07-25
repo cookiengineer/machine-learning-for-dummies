@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Evolutionary Flappy Plane</title>
+
+		<!-- BOOTSTRAP -->
+		<script src="source/Twister.js"></script>
+		<script src="source/Brain.js"></script>
+		<script src="source/Goal.js"></script>
+		<script src="source/Plane.js"></script>
+		<script src="source/Game.js"></script>
+		<script src="source/Agent.js"></script>
+		<script src="source/Evolution.js"></script>
+
+		<link rel="stylesheet" href="./index.css">
+
+	</head>
+	<body>
+		<aside>
+			<h3>Evolutionary Flappy Plane</h3>
+			<button onclick="_start_game_manual()">manual</button>
+			<span></span>
+			<button onclick="_start_game_autopilot()">autopilot</button>
+			<button disabled onclick="game.setFPS(60)">normal</button>
+			<button disabled onclick="game.setFPS(120)">fast</button>
+			<button disabled onclick="game.setFPS(360)">hyper</button>
+			<i>Manual: Click/Touch the Canvas to flap</i>
+			<a rel="noopener nofollow" target="_blank" href="https://github.com/cookiengineer/machine-learning-for-dummies">GitHub Repo</a>
+		</aside>
+
+		<script>
+
+		(function(global) {
+
+			const autopilot_buttons = Array.from(document.querySelectorAll('button[disabled]'));
+			const manual_control    = function() {
+
+				if (typeof game === 'undefined') return;
+
+				let player = game.planes[0] || null;
+				if (player !== null) {
+					player.jump();
+				}
+
+			};
+
+			global._start_game_autopilot = function() {
+
+				if (typeof game !== 'undefined') {
+					game.stop();
+				}
+
+
+				game = new Game();
+				game.evolution = new Evolution({
+					population: 64,
+					network:    [2, [2], 1]
+				});
+				game.start();
+				game.update();
+				game.render();
+
+
+				let canvas = document.querySelector('canvas');
+				canvas.removeEventListener('click', manual_control);
+
+				autopilot_buttons.forEach(function(button) {
+					button.removeAttribute('disabled');
+				});
+
+			};
+
+			global._start_game_manual = function() {
+
+				if (typeof game !== 'undefined') {
+					game.stop();
+				}
+
+
+				game = new Game();
+				game.planes.push(new Plane());
+				game.start();
+				game.update();
+				game.render();
+
+
+				let canvas = document.querySelector('canvas');
+				canvas.addEventListener('click', manual_control, true);
+
+				autopilot_buttons.forEach(function(button) {
+					button.setAttribute('disabled', 'true');
+				});
+
+			};
+
+		})(this);
+		</script>
+	</body>
+</html>

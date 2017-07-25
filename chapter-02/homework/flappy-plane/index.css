@@ -1,0 +1,126 @@
+
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #404552;
+}
+
+body * {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+aside {
+	display: block;
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	bottom: auto;
+	left: 0px;
+	margin: 0px;
+	padding: 16px;
+	text-align: center;
+	border-left: 1px solid #2a2c36;
+	background: #333742;
+	z-index: 2;
+}
+
+aside h3 {
+	display: block;
+	margin: 0px auto 16px auto;
+	padding: 0px;
+	color: #ffffff;
+	font-size: 32px;
+	font-family: 'DejaVu Sans';
+	text-align: center;
+	line-height: 32px;
+	vertical-align: middle;
+}
+
+aside a {
+	display: block;
+	position: absolute;
+	top: 16px;
+	right: 16px;
+	color: #ffffff;
+	font-family: 'DejaVu Sans';
+	font-size: 16px;
+	text-decoration: none;
+}
+
+aside a:hover,
+aside a:focus {
+	color: #4dadd4;
+	transition: all 250ms ease-out;
+}
+
+aside button {
+	display: inline-block;
+	vertical-align: top;
+	font-size: 16px;
+	line-height: 24px;
+	color: #ffffff;
+	background: #3e4351;
+	border: 1px solid #2a2c36;
+	border-radius: 4px;
+	transition: all 250ms ease-out;
+	vertical-align: middle;
+	outline: none;
+	cursor: pointer;
+}
+
+aside button:hover,
+aside button:focus {
+	outline: none;
+	background: #677085;
+	transition: all 250ms ease-out;
+}
+
+aside button:active {
+	outline: none;
+	background: #4dadd4;
+	transition: all 0ms ease-out;
+}
+
+aside button[disabled],
+aside button[disabled]:hover
+aside button[disabled]:focus,
+aside button[disabled]:active {
+	color: #677085;
+	background: #3e4351;
+}
+
+aside span {
+	display: inline-block;
+	width: 32px;
+}
+
+aside i {
+	display: inline-block;
+	margin: 0px 0px 0px 32px;
+	color: #ffffff;
+	font-family: 'DejaVu Sans';
+	font-weight: normal;
+	font-style: normal;
+	vertical-align: middle;
+}
+
+canvas {
+	position: absolute;
+	top: 50%;
+	top: calc(50% + 64px);
+	right: auto;
+	bottom: auto;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border: 1px solid #2a2c36;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background: url('./background.png') center center;
+	z-index: 1;
+}
+
