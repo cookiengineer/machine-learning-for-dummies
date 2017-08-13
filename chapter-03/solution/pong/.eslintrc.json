@@ -1,0 +1,115 @@
+{
+	"env": {
+		"browser": true,
+		"es6": true,
+		"node": true
+	},
+	"extends": "eslint:recommended",
+	"parserOptions": {
+		"ecmaVersion": 2016,
+		"ecmaFeatures": {
+			"impliedStrict": true
+		}
+	},
+	"globals": {
+		"Agent": true,
+		"Ball": true,
+		"Brain": true,
+		"Game": true,
+		"Paddle": true,
+		"Twister": true,
+		"global": true
+	},
+	"rules": {
+		"array-bracket-spacing": [ "error", "always", {
+			"singleValue": true,
+			"objectsInArrays": false
+		}],
+		"brace-style": [ "error", "1tbs", {
+			"allowSingleLine": false
+		}],
+		"camelcase": "off",
+		"comma-dangle": [ "error", {
+			"arrays": "never",
+			"objects": "never",
+			"imports": "never",
+			"exports": "never",
+			"functions": "never"
+		}],
+		"comma-spacing": [ "error", {
+			"before": false,
+			"after": true
+		}],
+		"comma-style": [ "error", "last" ],
+		"complexity": "off",
+		"consistent-return": "off",
+		"consistent-this": "off",
+		"eol-last": [ "error", "always" ],
+		"eqeqeq": [ "error", "always" ],
+		"func-names": [ "error", "never" ],
+		"func-style": [ "error", "expression" ],
+		"indent": [ "error", "tab", {
+			"SwitchCase": 1
+		}],
+		"keyword-spacing": [ "error", {
+			"before": true,
+			"after": true
+		}],
+		"linebreak-style": [ "error", "unix" ],
+		"lines-around-comment": [ "error", {
+			"beforeBlockComment": true,
+			"afterBlockComment": true,
+			"beforeLineComment": false,
+			"afterLineComment": false
+		}],
+		"multiline-ternary": [ "error", "never" ],
+		"newline-before-return": "off",
+		"newline-after-var": "off",
+		"newline-per-chained-call": "off",
+		"no-console": [ "error", {
+			"allow": [ "clear", "log", "info", "warn", "error", "deserialize", "serialize" ]
+		}],
+		"no-control-regex": "off",
+		"no-dupe-args": [ "error" ],
+		"no-dupe-keys": [ "error" ],
+		"no-empty": [ "error", {
+			"allowEmptyCatch": true
+		}],
+		"no-extra-semi": [ "error" ],
+		"no-floating-decimal": [ "error" ],
+		"no-global-assign": [ "error", {
+			"exceptions": [
+				"Audio",
+				"Image",
+				"console"
+			]
+		}],
+		"no-mixed-spaces-and-tabs": [ "error", "smart-tabs" ],
+		"no-negated-in-lhs": [ "error" ],
+		"no-octal": "off",
+		"no-return-assign": [ "error" ],
+		"no-return-await": [ "error" ],
+		"no-sequences": [ "error" ],
+		"no-shadow": "off",
+		"no-shadow-restricted-names": [ "error" ],
+		"no-trailing-spaces": [ "error" ],
+		"no-undef": [ "error", {
+			"typeof": false
+		}],
+		"no-undef-init": "off",
+		"no-undefined": "off",
+		"no-unreachable": [ "error" ],
+		"no-unused-vars": [ "error", {
+			"args": "none",
+			"varsIgnorePattern": "^_[A-Za-z]+"
+		}],
+		"no-var": [ "error" ],
+		"object-curly-spacing": [ "error", "always" ],
+		"semi": [ "error", "always" ],
+		"semi-spacing": [ "error" ],
+		"space-before-blocks": [ "error", "always" ],
+		"space-in-parens": [ "error", "never" ],
+		"space-infix-ops": [ "error" ],
+		"space-unary-ops": [ "error" ]
+	}
+}

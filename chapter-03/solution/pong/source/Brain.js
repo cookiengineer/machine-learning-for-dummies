@@ -1,6 +1,14 @@
 
 (function(global) {
 
+	const _LEARNING_RATE     = 0.3;
+	const _LEARNING_MOMENTUM = 0.9;
+
+
+	const _error_function = function(value, expected) {
+		return value * (1 - value) * (expected - value);
+	};
+
 	const _random = function() {
 		return (Math.random() * 2) - 1;
 	};
@@ -8,8 +16,6 @@
 	const _sigmoid = function(value) {
 		return (1 / (1 + Math.exp((-1 * value) / 1)));
 	};
-
-
 
 	const Brain = function() {
 		this.layers = [];
@@ -53,14 +59,18 @@
 
 				// Output Layer
 				} else if (l === layers_size - 1) {
+
 					size = output_size;
+
 				}
 
 
-				// Each Neuron has value and weights
 				return new Array(size).fill(0).map(_ => ({
-					value:   _random(),
-					weights: new Array(prev).fill(0).map(val => _random())
+					bias:     1,
+					delta:    0,
+					value:    _random(),
+					gradient: new Array(prev).fill(0),
+					weights:  new Array(prev).fill(0).map(val => _random())
 				}));
 
 			});
@@ -71,12 +81,13 @@
 
 			let layers = this.layers;
 
+
 			// Set Input Layer values
 			layers[0].forEach((neuron, n) => (neuron.value = inputs[n]));
 
 
 			// Feed forward for Hidden Layers + Output Layer
-			layers.slice(1).forEach((layer, l) => {
+			layers.slice(1).forEach(layer => {
 
 				let prev_layer = layers[layers.indexOf(layer) - 1];
 
@@ -85,7 +96,7 @@
 					let values = prev_layer.map((prev, p) => prev.value * neuron.weights[p]);
 					let sum    = values.reduce((a, b) => a + b, 0);
 
-					neuron.value = _sigmoid(sum);
+					neuron.value = _sigmoid(sum + neuron.bias);
 
 				});
 
@@ -97,33 +108,61 @@
 
 		},
 
-		serialize: function() {
+		learn: function(inputs, outputs) {
 
-			let weights = [];
+			this.compute(inputs);
 
-			this.layers.forEach(layer => {
 
-				layer.forEach(neuron => {
-					weights.push.apply(weights, neuron.weights);
+			let layers = this.layers;
+
+			// Calculate Gradient for Output Layer
+			layers[layers.length - 1].forEach((neuron, n) => {
+				neuron.delta = _error_function(neuron.value, outputs[n]);
+			});
+
+
+			// Calculate Gradient for Hidden Layers + Input Layer
+			layers.slice(0, layers.length - 1).reverse().forEach(layer => {
+
+				let next_layer = layers[layers.indexOf(layer) + 1];
+
+
+				layer.forEach((neuron, n) => {
+
+					let deltas = next_layer.map(next => next.delta * next.weights[n]);
+					let error  = deltas.reduce((a, b) => a + b, 0);
+
+					neuron.delta = neuron.value * (1 - neuron.value) * error;
+
 				});
 
 			});
 
-			return weights;
 
-		},
+			// Re-Calculate weights based on Gradient
+			layers.forEach((layer, l) => {
 
-		deserialize: function(weights) {
-
-			let index = 0;
-
-			this.layers.forEach(layer => {
+				let prev_layer = layers[layers.indexOf(layer) - 1];
 
 				layer.forEach(neuron => {
 
-					neuron.weights = neuron.weights.map(weight => {
-						return weights[index++];
-					});
+					neuron.bias += _LEARNING_RATE * neuron.delta;
+
+
+					// XXX: Input Layer has no weights
+					if (l > 0) {
+
+						neuron.weights.forEach((weight, w) => {
+
+							let value = prev_layer[w].value;
+							let delta = _LEARNING_RATE * neuron.delta * value;
+
+							neuron.weights[w] += delta + _LEARNING_MOMENTUM * neuron.gradient[w];
+							neuron.gradient[w] = delta;
+
+						});
+
+					}
 
 				});
 

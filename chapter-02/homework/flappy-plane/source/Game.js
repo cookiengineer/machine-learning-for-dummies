@@ -387,5 +387,5 @@
 
 	global.Game = Game;
 
-})(this);
+})(typeof global !== 'undefined' ? global : this);
 
