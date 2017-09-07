@@ -145,6 +145,34 @@ Agent.prototype.crossover = function(father) {
 };
 ```
 
+**Training and Evaluation**
+
+Compared with Reinforcement Learning, Evolutionary algorithms
+are not dependent on training data vs. test data - because they
+are an unsupervised learning system (technically speaking nothing
+is unsupervised, but this is as far as we get without quantum
+computers).
+
+Unsupervised means that an evolutionary algorithm will adapt
+constantly to the current problem or dataset. This is a huge
+advantage when when neural networks are used for situational
+controls based on sensor input. The downside of evolution is
+that it therefore cannot learn historical or time-based data.
+
+However, the training of an evolutionary algorithm is always
+done live - on every update cycle of the simulation.
+
+The so-called fitness function always measures which Agent
+has progressed how-far in the game and gives points accordingly.
+
+If you want to prioritize differently in strategies, you have
+to tweak the fitness function accordingly, so that it will give
+different amount of points for different goals that the Agents
+can achieve.
+
+
+**Advanced ANN Design Algorithms**
+
 More advanced algorithms like NEAT will try to optimize the
 random search space by remembering previously tried
 combinations (recessive gene history) and try to optimize
@@ -169,4 +197,5 @@ species tracking) or by huge parallelization of simulations.
 The huge advantage evolution has - compared to reinforcement
 learning approaches - is that it can be parallelized and
 take advantage of multiple networked computer systems.
+
 

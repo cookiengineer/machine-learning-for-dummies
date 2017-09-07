@@ -11,7 +11,7 @@
 
 
 
-	const Brain = function(settings) {
+	const Brain = function() {
 		this.layers = [];
 	};
 
@@ -46,12 +46,12 @@
 					prev = 0;
 					size = input_size;
 
-					// first Hidden Layer
+				// first Hidden Layer
 				} else if (l === 1) {
 
 					prev = input_size;
 
-					// Output Layer
+				// Output Layer
 				} else if (l === layers_size - 1) {
 					size = output_size;
 				}
