@@ -190,7 +190,7 @@ happens; so optimizing random search space is what all
 evolutionary concepts try to achieve as their first
 priority.
 
-Those optimizations can be achieve either through savings in
+Those optimizations can be achieved either through savings in
 computation time (e.g. recessive gene history or dominant
 species tracking) or by huge parallelization of simulations.
 
